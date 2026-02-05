@@ -49,16 +49,18 @@ void main() {
 
   // 6. Type Test Operators
 
-  var name = "Faruk";
+  var name;
+  name = "Dart";
   print(name is String); // true
   print(name is! int); // true
-
   // 7. Null-aware Operators
+  name = 10;
+  print(name is int); // true
 
   int? age;
-  print(age ?? 18); // if age is null → 18
+  print(age ?? 18);
 
-  age ??= 20; // assign only if null
+  age ??= 20;
   print(age); // 20
 
   // 8. Conditional (Ternary) Operator

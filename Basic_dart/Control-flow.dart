@@ -53,6 +53,7 @@ void main() {
 
   int? age = getAgeInput();
   String? studentStatus = getStudentStatusInput();
+  int? day = getDayInput();
 
   // Exit if any input is invalid
   if (age == null || studentStatus == null) return;
@@ -61,6 +62,7 @@ void main() {
 
   printAgeCategory(age);
   printStudentStatus(studentStatus);
+  printWeekday(day);
 }
 
 // Function to get age input safely
@@ -96,6 +98,21 @@ String? getStudentStatusInput() {
   return input.toLowerCase(); // Normalize input
 }
 
+// Function to get day input safely
+int? getDayInput() {
+  print("Enter number of the day:");
+  String? input = stdin.readLineSync();
+  if (input == null || input.isEmpty) {
+    return null;
+  }
+  try {
+    return int.parse(input);
+  } catch (e) {
+    print('Invalid day number input!');
+    return null;
+  }
+}
+
 // Function to print age category
 
 void printAgeCategory(int age) {
@@ -114,4 +131,34 @@ void printStudentStatus(String status) {
   print(
     status == 'yes' ? 'Yes, you are a student.' : 'No, you are not a student.',
   );
+}
+
+// Function to print weekday based on day number
+void printWeekday(int? day) {
+  if (day == null) return;
+  switch (day) {
+    case 1:
+      print("Monday");
+      break;
+    case 2:
+      print("Tuesday");
+      break;
+    case 3:
+      print("Wednesday");
+      break;
+    case 4:
+      print("Thursday");
+      break;
+    case 5:
+      print("Friday");
+      break;
+    case 6:
+      print("Saturday");
+      break;
+    case 7:
+      print("Sunday");
+      break;
+    default:
+      print("Invalid day number!");
+  }
 }
